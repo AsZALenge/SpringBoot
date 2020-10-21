@@ -1,5 +1,6 @@
 package com.it.dto;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public class DormDto {
@@ -14,8 +15,10 @@ public class DormDto {
 	private String dorm_waterbill;
 	private String dorm_electricbill;
 	private String dorm_img;
-	private String dorm_pricedate;
-	private String dorm_pricemonth;
+	private BigDecimal dorm_pricedate_start;
+	private BigDecimal dorm_pricedate_end;
+	private BigDecimal dorm_pricemonth_start;
+	private BigDecimal dorm_pricemonth_end;
 	private String dorm_status;
 	private List<RoomDto> rooms;
 	
@@ -34,8 +37,12 @@ public class DormDto {
 		// TODO Auto-generated constructor stub
 	}
 
-	public DormDto(int dorm_id, int id, String dorm_name, String dorm_address, String dorm_numbank, String dorm_namebank,
-			int type_id, String dorm_waterbill, String dorm_electricbill, String dorm_img, String dorm_pricedate, String dorm_pricemonth, String dorm_status) {
+	
+	public DormDto(int dorm_id, int id, String dorm_name, String dorm_address, String dorm_numbank,
+			String dorm_namebank, int type_id, String dorm_waterbill, String dorm_electricbill, String dorm_img,
+			BigDecimal dorm_pricedate_start, BigDecimal dorm_pricedate_end, BigDecimal dorm_pricemonth_start,
+			BigDecimal dorm_pricemonth_end, String dorm_status, List<RoomDto> rooms, DormtypeDto dormtype,
+			ConvenientDto conDto) {
 		super();
 		this.dorm_id = dorm_id;
 		this.id = id;
@@ -47,11 +54,18 @@ public class DormDto {
 		this.dorm_waterbill = dorm_waterbill;
 		this.dorm_electricbill = dorm_electricbill;
 		this.dorm_img = dorm_img;
-		this.dorm_pricedate = dorm_pricedate;
-		this.dorm_pricemonth = dorm_pricemonth;
+		this.dorm_pricedate_start = dorm_pricedate_start;
+		this.dorm_pricedate_end = dorm_pricedate_end;
+		this.dorm_pricemonth_start = dorm_pricemonth_start;
+		this.dorm_pricemonth_end = dorm_pricemonth_end;
 		this.dorm_status = dorm_status;
+		this.rooms = rooms;
+		this.dormtype = dormtype;
+		this.conDto = conDto;
 	}
-	
+
+
+
 	private DormtypeDto dormtype;
 	
 	private ConvenientDto conDto;
@@ -136,22 +150,6 @@ public class DormDto {
 		this.dorm_img = dorm_img;
 	}
 
-	public String getDorm_pricedate() {
-		return dorm_pricedate;
-	}
-
-	public void setDorm_pricedate(String dorm_pricedate) {
-		this.dorm_pricedate = dorm_pricedate;
-	}
-
-	public String getDorm_pricemonth() {
-		return dorm_pricemonth;
-	}
-
-	public void setDorm_pricemonth(String dorm_pricemonth) {
-		this.dorm_pricemonth = dorm_pricemonth;
-	}
-
 	public String getDorm_status() {
 		return dorm_status;
 	}
@@ -174,6 +172,38 @@ public class DormDto {
 
 	public void setConDto(ConvenientDto conDto) {
 		this.conDto = conDto;
+	}
+
+	public BigDecimal getDorm_pricedate_start() {
+		return dorm_pricedate_start;
+	}
+
+	public void setDorm_pricedate_start(BigDecimal dorm_pricedate_start) {
+		this.dorm_pricedate_start = dorm_pricedate_start;
+	}
+
+	public BigDecimal getDorm_pricedate_end() {
+		return dorm_pricedate_end;
+	}
+
+	public void setDorm_pricedate_end(BigDecimal dorm_pricedate_end) {
+		this.dorm_pricedate_end = dorm_pricedate_end;
+	}
+
+	public BigDecimal getDorm_pricemonth_start() {
+		return dorm_pricemonth_start;
+	}
+
+	public void setDorm_pricemonth_start(BigDecimal dorm_pricemonth_start) {
+		this.dorm_pricemonth_start = dorm_pricemonth_start;
+	}
+
+	public BigDecimal getDorm_pricemonth_end() {
+		return dorm_pricemonth_end;
+	}
+
+	public void setDorm_pricemonth_end(BigDecimal dorm_pricemonth_end) {
+		this.dorm_pricemonth_end = dorm_pricemonth_end;
 	}
 	
 }

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>แจ้งการนัดหมาย </title>
+</head>
+<body>
+    <p th:text="${greeting}"> สวัสดี< </p>
+    <p> <b>คุณได้ทำการจ่ายค่ามัดจำห้องพักเรียบร้อยแล้ว นี่เป็น อีเมล์แจ้งตารางการนัดหมาย </b> ณ วันที่ <span th:text="${date}"></span></p>
+    <p>มีรายละเอียดดังนี้ :</p>
+    <ul th:remove="all-but-first">
+        <li th:each="hobby : ${hobbies}" th:text="${hobby}"></li>
+    </ul>
+    <p>ติดต่อ<br>
+        <em>โทร.0922946820</em>
+    </p>
+</body>
+</html>

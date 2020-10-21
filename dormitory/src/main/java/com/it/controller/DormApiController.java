@@ -1,5 +1,6 @@
 package com.it.controller;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.it.dto.DormDto;
 import com.it.dto.MemberDto;
@@ -78,4 +80,15 @@ public class DormApiController {
 		List<DormDto> dorm = dormService.getDormByTypeId(type_id);
 		return new ResponseEntity<List<DormDto>>(dorm, HttpStatus.OK);
 	}
+	
+	@GetMapping("/search-dorm")
+	public ResponseEntity<List<DormDto>> searchDorm(
+			@RequestParam(required = true) String dormName,
+			@RequestParam(required = true) BigDecimal priceStart,
+			@RequestParam(required = true) BigDecimal priceEnd,
+			@RequestParam(required = true) String dormType ) throws Exception {
+		List<DormDto> dorm = dormService.searchDorm(dormName, priceStart, priceEnd, dormType);
+		return new ResponseEntity<List<DormDto>>(dorm, HttpStatus.OK);
+	}
+	
 }

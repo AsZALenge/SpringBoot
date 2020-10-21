@@ -1,6 +1,9 @@
 package com.it.service;
 
+import java.math.BigDecimal;
 import java.util.List;
+
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.it.dto.DormDto;
 
@@ -21,4 +24,6 @@ public interface DormService {
 	public List<DormDto> getDormByDormID(Integer dorm_id) throws Exception;
 	
 	public List<DormDto> getDormByTypeId (Integer type_id) throws Exception;
+	
+	public List<DormDto> searchDorm(@RequestParam String dormName, @RequestParam BigDecimal priceStart, @RequestParam BigDecimal priceEnd, @RequestParam String dormType ) throws Exception;
 }

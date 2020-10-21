@@ -1,8 +1,8 @@
 package com.it.entity;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,8 +12,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "tb_dorm")
@@ -52,11 +50,17 @@ public class DormEntity implements Serializable{
 	@Column(name = "dorm_img")
 	private String dorm_img;
 	
-	@Column(name = "dorm_pricedate")
-	private String dorm_pricedate;
+	@Column(name = "dorm_pricedate_start")
+	private BigDecimal dorm_pricedate_start;
 	
-	@Column(name = "dorm_pricemonth")
-	private String dorm_pricemonth;
+	@Column(name = "dorm_pricedate_end")
+	private BigDecimal dorm_pricedate_end;
+	
+	@Column(name = "dorm_pricemonth_start")
+	private BigDecimal dorm_pricemonth_start;
+	
+	@Column(name = "dorm_pricemonth_end")
+	private BigDecimal dorm_pricemonth_end;
 	
 	@Column(name = "dorm_status")
 	private String dorm_status;
@@ -163,22 +167,6 @@ public class DormEntity implements Serializable{
 		this.dorm_img = dorm_img;
 	}
 
-	public String getDorm_pricedate() {
-		return dorm_pricedate;
-	}
-
-	public void setDorm_pricedate(String dorm_pricedate) {
-		this.dorm_pricedate = dorm_pricedate;
-	}
-
-	public String getDorm_pricemonth() {
-		return dorm_pricemonth;
-	}
-
-	public void setDorm_pricemonth(String dorm_pricemonth) {
-		this.dorm_pricemonth = dorm_pricemonth;
-	}
-
 	public String getDorm_status() {
 		return dorm_status;
 	}
@@ -203,6 +191,37 @@ public class DormEntity implements Serializable{
 		this.convenientEntity = convenientEntity;
 	}
 
+	public BigDecimal getDorm_pricedate_start() {
+		return dorm_pricedate_start;
+	}
+
+	public void setDorm_pricedate_start(BigDecimal dorm_pricedate_start) {
+		this.dorm_pricedate_start = dorm_pricedate_start;
+	}
+
+	public BigDecimal getDorm_pricedate_end() {
+		return dorm_pricedate_end;
+	}
+
+	public void setDorm_pricedate_end(BigDecimal dorm_pricedate_end) {
+		this.dorm_pricedate_end = dorm_pricedate_end;
+	}
+
+	public BigDecimal getDorm_pricemonth_start() {
+		return dorm_pricemonth_start;
+	}
+
+	public void setDorm_pricemonth_start(BigDecimal dorm_pricemonth_start) {
+		this.dorm_pricemonth_start = dorm_pricemonth_start;
+	}
+
+	public BigDecimal getDorm_pricemonth_end() {
+		return dorm_pricemonth_end;
+	}
+
+	public void setDorm_pricemonth_end(BigDecimal dorm_pricemonth_end) {
+		this.dorm_pricemonth_end = dorm_pricemonth_end;
+	}
 
 	
 }

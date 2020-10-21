@@ -1,5 +1,6 @@
 package com.it.service.impl;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -78,8 +79,10 @@ public class DormServiceImpl implements DormService {
 			dto.setDorm_waterbill(entity.getDorm_waterbill());
 			dto.setDorm_electricbill(entity.getDorm_electricbill());
 			dto.setDorm_img(entity.getDorm_img());
-			dto.setDorm_pricedate(entity.getDorm_pricedate());
-			dto.setDorm_pricemonth(entity.getDorm_pricemonth());
+			dto.setDorm_pricedate_start(entity.getDorm_pricedate_start());
+			dto.setDorm_pricedate_end(entity.getDorm_pricedate_end());
+			dto.setDorm_pricemonth_start(entity.getDorm_pricemonth_start());
+			dto.setDorm_pricemonth_end(entity.getDorm_pricemonth_end());
 			dto.setDorm_status(entity.getDorm_status());
 			
 			if (null != entity.getDormtypeEntity()) {		
@@ -129,11 +132,13 @@ public class DormServiceImpl implements DormService {
 			entity.setDorm_numbank(dto.getDorm_numbank());
 			entity.setDorm_namebank(dto.getDorm_namebank());
 			entity.setType_id(dto.getType_id());
-			entity.setDorm_waterbill(entity.getDorm_waterbill());
+			entity.setDorm_waterbill(dto.getDorm_waterbill());
 			entity.setDorm_electricbill(dto.getDorm_electricbill());
 			entity.setDorm_img(dto.getDorm_img());
-			entity.setDorm_pricedate(dto.getDorm_pricedate());
-			entity.setDorm_pricemonth(dto.getDorm_pricemonth());
+			entity.setDorm_pricedate_start(dto.getDorm_pricedate_start());
+			entity.setDorm_pricedate_end(dto.getDorm_pricedate_end());
+			entity.setDorm_pricemonth_start(dto.getDorm_pricemonth_start());
+			entity.setDorm_pricemonth_end(dto.getDorm_pricemonth_end());
 			entity.setDorm_status(dto.getDorm_status());
 		}
 		return entity;
@@ -214,5 +219,22 @@ public class DormServiceImpl implements DormService {
 			throw new NullPointerException("getDormByTypeId :: type_id is null! ");
 		}
 		return dorm;
+	}
+
+	@Override
+	public List<DormDto> searchDorm(String dormName, BigDecimal priceStart, BigDecimal priceEnd, String dormType) throws Exception {
+		List<DormDto> dorms = new ArrayList<>();
+		if (!dormType.isEmpty() && dormType.equalsIgnoreCase("MONTH")) {
+			List<DormEntity> entities = dormRepository.searchDormTypePermonth(dormName, priceStart, priceEnd);
+			if (entities != null) {
+				dorms = entities.stream().map(entity -> convertEntityToDto(entity)).collect(Collectors.toList());
+			}
+		} else if (!dormType.isEmpty() && dormType.equalsIgnoreCase("DAY")) {
+			List<DormEntity> entities = dormRepository.searchDormTypePerday(dormName, priceStart, priceEnd);
+			if (entities != null) {
+				dorms = entities.stream().map(entity -> convertEntityToDto(entity)).collect(Collectors.toList());
+			}
+		}
+		return dorms;
 	}
 }

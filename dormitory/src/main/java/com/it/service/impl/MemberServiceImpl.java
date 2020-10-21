@@ -2,17 +2,12 @@ package com.it.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.it.dao.MemberRepository;
-import com.it.dto.DormDto;
 import com.it.dto.MemberDto;
-import com.it.dto.RoomDto;
-import com.it.entity.DormEntity;
 import com.it.entity.MemberEntity;
-import com.it.entity.RoomEntity;
 import com.it.service.MemberService;
 
 @Service
@@ -68,9 +63,18 @@ public class MemberServiceImpl implements MemberService {
 			dto.setId(entity.getId());
 			dto.setDorm_id(entity.getDorm_id());
 			dto.setRoom_id(entity.getRoom_id());
+			dto.setMem_ref(entity.getMem_ref());
+			dto.setFirst_name(entity.getFirst_name());
+			dto.setLast_name(entity.getLast_name());
+			dto.setCitizen(entity.getCitizen());
+			dto.setEmail(entity.getEmail());
+			dto.setTel(entity.getTel());
 			dto.setMem_reserdate(entity.getMem_reserdate());
-			dto.setMem_add(entity.getMem_add());
-			dto.setRoom_price(entity.getRoom_price());
+			dto.setMem_guest(entity.getMem_guest());
+			dto.setDate_of_stay(entity.getDate_of_stay());
+			dto.setDeposit(entity.getDeposit());
+			dto.setDeposit_status(entity.getDeposit_status());
+			dto.setMem_img(entity.getMem_img());
 
 		}
 		return dto;
@@ -83,9 +87,18 @@ public class MemberServiceImpl implements MemberService {
 			entity.setId(dto.getId());
 			entity.setDorm_id(dto.getDorm_id());
 			entity.setRoom_id(dto.getRoom_id());
+			entity.setMem_ref(dto.getMem_ref());
+			entity.setFirst_name(dto.getFirst_name());
+			entity.setLast_name(dto.getLast_name());
+			entity.setCitizen(dto.getCitizen());
+			entity.setEmail(dto.getEmail());
+			entity.setTel(dto.getTel());
 			entity.setMem_reserdate(dto.getMem_reserdate());
-			entity.setMem_add(dto.getMem_add());
-			entity.setRoom_price(dto.getRoom_price());
+			entity.setMem_guest(dto.getMem_guest());
+			entity.setDate_of_stay(dto.getDate_of_stay());
+			entity.setDeposit(dto.getDeposit());
+			entity.setDeposit_status(dto.getDeposit_status());
+			entity.setMem_img(dto.getMem_img());
 		}
 		return entity;
 	}
